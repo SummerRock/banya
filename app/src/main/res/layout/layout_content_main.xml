@@ -12,46 +12,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.support.v7.widget.Toolbar
-
-
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-
             app:layout_scrollFlags="scroll|enterAlways"
-
-            app:title=" "
+            app:title="@string/film"
             >
             <RadioGroup
                 android:layout_gravity="center"
                 android:gravity="center_horizontal"
                 android:id="@+id/radiogroup"
                 android:orientation="horizontal"
+                android:checkedButton="@+id/rb_film"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <RadioButton
-                    android:singleLine="true"
+                    android:maxLines="1"
                     android:background="@null"
                     android:button="@null"
                     android:checked="true"
-                    android:id="@+id/rb_home"
-                    android:drawableTop="@drawable/tab_home_selector"
+                    android:id="@+id/rb_film"
+                    android:drawableTop="@drawable/tab_film_selector"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <RadioButton
-                    android:singleLine="true"
+                    android:maxLines="1"
                     android:background="@null"
                     android:button="@null"
-                    android:drawableTop="@drawable/tab_dynamic_selector"
-                    android:id="@+id/rb_dynamic"
+                    android:drawableTop="@drawable/tab_book_selector"
+                    android:id="@+id/rb_book"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <RadioButton
-                    android:singleLine="true"
+                    android:maxLines="1"
                     android:background="@null"
                     android:button="@null"
-                    android:id="@+id/rb_message"
-                    android:drawableTop="@drawable/tab_message_selector"
+                    android:id="@+id/rb_music"
+                    android:drawableTop="@drawable/tab_music_selector"
                     android:layout_width="40dp"
                     android:layout_height="40dp" />
 
