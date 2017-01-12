@@ -36,4 +36,7 @@
 依旧是不懂爱也不懂情\n
 写歌的人断了魂阿\n
 听歌的人最无情</string>
+    <string name="film">电影</string>
+    <string name="book">图书</string>
+    <string name="music">音乐</string>
 </resources>
