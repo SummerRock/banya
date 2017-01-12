@@ -22,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.forezp.banya.R;
 import com.forezp.banya.adapter.ThemeColorAdapter;
@@ -73,7 +74,9 @@ public class MainActivity extends BaseActivity implements IgetTop250View{
     private BookFragment bookFragment;
     private MusicFragment musicFragment;
     private List<Fragment> listFragment;
+    private static final String TAG = "MainActivity";
     private int currentFragment;
+    private long firstTime = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,22 +97,20 @@ public class MainActivity extends BaseActivity implements IgetTop250View{
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
                 switch (checkedId) {
-                    case R.id.rb_home:
+                    case R.id.rb_film:
                         currentFragment = 0;
+                        toolbar.setTitle(R.string.film);
                         break;
-                    case R.id.rb_dynamic:
-
+                    case R.id.rb_book:
                         currentFragment = 1;
-
+                        toolbar.setTitle(R.string.book);
                         break;
-                    case R.id.rb_message:
+                    case R.id.rb_music:
                         currentFragment=2;
+                        toolbar.setTitle(R.string.music);
                         break;
-
                 }
-
                 viewpager.setCurrentItem(currentFragment, false);
-
             }
         });
 
@@ -159,13 +160,13 @@ public class MainActivity extends BaseActivity implements IgetTop250View{
         public void onPageSelected(int position) {
             switch (position) {
                 case 0:
-                    radioGroup.check(R.id.rb_home);
+                    radioGroup.check(R.id.rb_film);
                     break;
                 case 1:
-                    radioGroup.check(R.id.rb_dynamic);
+                    radioGroup.check(R.id.rb_book);
                     break;
                 case 2:
-                    radioGroup.check(R.id.rb_message);
+                    radioGroup.check(R.id.rb_music);
                     break;
             }
         }
@@ -199,6 +200,26 @@ public class MainActivity extends BaseActivity implements IgetTop250View{
         onNavgationViewMenuItemSelected(idNavigationview);
     }
 
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+            if(drawerlayoutHome.isDrawerOpen(idNavigationview)){
+                drawerlayoutHome.closeDrawer(idNavigationview);
+                return true;
+            } else {
+                long secondTime = System.currentTimeMillis();
+                if (secondTime - firstTime > 2000) { //如果两次按键时间间隔大于2秒，则不退出
+                    Toast.makeText(getApplicationContext(), "再按一次退出应用",
+                            Toast.LENGTH_SHORT).show();  //提示消息
+                    firstTime = secondTime;// 更新firstTime
+                    return true;
+                } else { // 两次按键小于2秒时，退出应用
+                    System.exit(0);
+                }
+            }
+        }
+        return super.onKeyUp(keyCode, event);
+    }
 
     /**
      * 设置NavigationView中menu的item被选中后要执行的操作
@@ -241,15 +262,18 @@ public class MainActivity extends BaseActivity implements IgetTop250View{
                                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        ThemeUtils.setThemeColor( getResources().getColor(themeColorList.get(themeColorAdapter.getPosition()).getColor()));// 不要变换位置
-                                        ThemeUtils.setThemePosition(themeColorAdapter.getPosition());
-                                        // finish();
-                                        new Handler().postDelayed(new Runnable() {
-                                            public void run() {
-                                                ActivityCollector.getInstance().refreshAllActivity();
-                                                // closeHandler.sendEmptyMessageDelayed(MSG_CLOSE_ACTIVITY, 300);
-                                            }
-                                        }, 100);
+                                        Log.i(TAG, "which = " + which + " current position = " + ThemeUtils.getThemePosition() + " new position = " + themeColorAdapter.getPosition());
+                                        if(ThemeUtils.getThemePosition()!=themeColorAdapter.getPosition()){
+                                            ThemeUtils.setThemeColor( getResources().getColor(themeColorList.get(themeColorAdapter.getPosition()).getColor()));// 不要变换位置
+                                            ThemeUtils.setThemePosition(themeColorAdapter.getPosition());
+                                            // finish();
+                                            new Handler().postDelayed(new Runnable() {
+                                                public void run() {
+                                                    ActivityCollector.getInstance().refreshAllActivity();
+                                                    // closeHandler.sendEmptyMessageDelayed(MSG_CLOSE_ACTIVITY, 300);
+                                                }
+                                            }, 100);
+                                        }
                                     }
                                 })
                                 .show();
