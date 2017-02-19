@@ -8,7 +8,6 @@ import java.util.Random;
  */
 public class MusicApiUtils {
 
-
     public static String Music_Titles []={"流行","经典","韩系","欧美"};
     public static String PopulayTag[] ={"歌声", "青春", "回忆", "孙燕姿","周杰伦","林俊杰", "陈奕迅", "王力宏", "邓紫棋","风声",  "海边", "童话", "美女",  "一生", "爱", "爱情", "远方", "缘分","天空","张国荣","黄家驹","　beyond", "黑豹乐队" };
     public static String ClassicTag []={"张国荣","黄家驹","　beyond", "黑豹乐队", "王菲", "五月天", "陈奕迅", "古巨基", "杨千嬅", "叶倩文", "许嵩","刘德华","邓丽君","张学友"};
@@ -26,13 +25,9 @@ public class MusicApiUtils {
                 return KereaTag;
             case 3:
                 return AmericanTag;
-
-
-
         }
         return null;
     }
-
 
     public static  String getRandomTAG(List<String> list){
         Random random=new Random();

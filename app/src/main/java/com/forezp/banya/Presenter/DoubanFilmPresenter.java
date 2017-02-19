@@ -39,7 +39,6 @@ public class DoubanFilmPresenter extends BasePresenter{
                     disPlayFilmLiveList(iGetFilmLiveView,filmLive, mContext);
                 },this::loadError);
 
-
     }
 
 

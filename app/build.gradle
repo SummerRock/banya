@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'android-apt'
+apply plugin: 'realm-android'
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
@@ -30,6 +31,7 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
     compile 'com.google.code.gson:gson:2.7'
     compile 'de.hdodenhof:circleimageview:2.0.0'
+    compile 'com.rom4ek:arcnavigationview:1.0.2'
 
 
     compile fileTree(include: ['*.jar'], dir: 'libs')

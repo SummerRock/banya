@@ -37,9 +37,7 @@ public class FilmLiveFragment extends BaseFragment implements IGetFilmLiveView,S
     private FilmLiveAdapter filmLiveAdapter;
 
     public static FilmLiveFragment newInstance() {
-
         Bundle args = new Bundle();
-
         FilmLiveFragment fragment = new FilmLiveFragment();
         fragment.setArguments(args);
         return fragment;
@@ -62,7 +60,6 @@ public class FilmLiveFragment extends BaseFragment implements IGetFilmLiveView,S
         idSwiperefreshlayout.setColorSchemeColors(ThemeUtils.getThemeColor());
         idSwiperefreshlayout.setOnRefreshListener(this);
         recyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-
         SpacesItemDecoration spacesItemDecoration=new SpacesItemDecoration(ScreenUtils.dipToPx(getActivity(),10),ScreenUtils.dipToPx(getActivity(),10),ScreenUtils.dipToPx(getActivity(),10),0);
         recyclerview.addItemDecoration(spacesItemDecoration);
         recyclerview.setAdapter(filmLiveAdapter);

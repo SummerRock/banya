@@ -77,7 +77,7 @@ public class MusicContentFragment extends BaseFragment implements SwipeRefreshLa
         idSwiperefreshlayout.setColorSchemeColors(ThemeUtils.getThemeColor());
         idSwiperefreshlayout.setOnRefreshListener(this);
         doubanMusicPresenter=new DoubanMusicPresenter(getActivity());
-        String tag=BookApiUtils.getRandomTAG(listTag);
+        String tag=MusicApiUtils.getRandomTAG(listTag);
         doubanMusicPresenter.searchMusicByTag(this,tag,false);
         adapter=new MusicAdapter(getActivity());
         mLayoutManager = new LinearLayoutManager(getContext());
@@ -112,7 +112,7 @@ public class MusicContentFragment extends BaseFragment implements SwipeRefreshLa
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                String tag=BookApiUtils.getRandomTAG(listTag);
+                                String tag=MusicApiUtils.getRandomTAG(listTag);
                                 doubanMusicPresenter.searchMusicByTag(MusicContentFragment.this,tag,true);
                             }
                         },1000) ;
@@ -154,7 +154,7 @@ public class MusicContentFragment extends BaseFragment implements SwipeRefreshLa
 
     @Override
     public void onRefresh() {
-        String tag=BookApiUtils.getRandomTAG(listTag);
+        String tag=MusicApiUtils.getRandomTAG(listTag);
         doubanMusicPresenter.searchMusicByTag(this,tag,false);
         idSwiperefreshlayout.postDelayed(new Runnable() {
             @Override

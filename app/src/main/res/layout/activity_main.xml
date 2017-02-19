@@ -6,18 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-
     android:id="@+id/drawerlayout_home"
     tools:context=".viewimpl.MainActivity">
-    <include layout="@layout/layout_content_main"/>
-    <android.support.design.widget.NavigationView
 
-        android:background="@color/bg_light_gray"
+    <include layout="@layout/layout_content_main"/>
+
+    <com.rom4ek.arcnavigationview.ArcNavigationView
         android:id="@+id/id_navigationview"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@android:color/white"
+        android:fitsSystemWindows="true"
         app:itemTextColor="@color/selector_nav_menu_textcolor"
-        android:layout_gravity="left"
-        app:itemIconTint="@color/theme_redbase_nav_menu_icontint"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </android.support.design.widget.NavigationView>
+        app:headerLayout="@layout/header_nav"
+        app:menu="@menu/menu_nav"
+        app:arc_cropDirection="cropInside"
+        app:arc_width="96dp"/>
 </android.support.v4.widget.DrawerLayout>

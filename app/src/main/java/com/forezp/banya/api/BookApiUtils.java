@@ -38,7 +38,6 @@ public class BookApiUtils {
         return null;
     }
 
-
     public static  String getRandomTAG(List<String> list){
         Random random=new Random();
         int i=random.nextInt(list.size());

@@ -26,7 +26,6 @@ public class ThemeUtils {
     public static void setThemePosition(int position){
         SharedPreferences.Editor editor = context.getSharedPreferences("ThemeColor",context.MODE_PRIVATE).edit();
         editor.putInt("position",position);
-
         editor.commit();
     }
 

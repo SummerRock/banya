@@ -26,7 +26,6 @@ public class FilmUsBoxAdapter extends EasyRecyclerViewAdapter<Subjects> {
     Context context;
     public FilmUsBoxAdapter(Context context){
         this.context=context;
-
     }
     @Override
     public RecyclerView.ViewHolder onCreate(ViewGroup parent, int viewType) {

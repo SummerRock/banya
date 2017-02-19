@@ -58,8 +58,7 @@ public class EntryActivity extends BaseActivity {
     };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry);
@@ -70,13 +69,10 @@ public class EntryActivity extends BaseActivity {
 
         Observable.timer(1000, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<Long>()
-                {
+                .subscribe(new Action1<Long>() {
 
                     @Override
-                    public void call(Long aLong)
-                    {
-
+                    public void call(Long aLong) {
                         startAnim();
                     }
                 });
@@ -87,8 +83,7 @@ public class EntryActivity extends BaseActivity {
         return null;
     }
 
-    private void startAnim()
-    {
+    private void startAnim() {
 
         ObjectAnimator animatorX = ObjectAnimator.ofFloat(mSplashImage, "scaleX", 1f, SCALE_END);
         ObjectAnimator animatorY = ObjectAnimator.ofFloat(mSplashImage, "scaleY", 1f, SCALE_END);
@@ -97,12 +92,10 @@ public class EntryActivity extends BaseActivity {
         set.setDuration(ANIMATION_TIME).play(animatorX).with(animatorY);
         set.start();
 
-        set.addListener(new AnimatorListenerAdapter()
-        {
+        set.addListener(new AnimatorListenerAdapter() {
 
             @Override
-            public void onAnimationEnd(Animator animation)
-            {
+            public void onAnimationEnd(Animator animation) {
 
                 startActivity(new Intent(EntryActivity.this, MainActivity.class));
                 EntryActivity.this.finish();
