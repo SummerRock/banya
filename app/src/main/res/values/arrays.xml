@@ -4,11 +4,11 @@
 <resources>
 
   <string-array name="tab_film">
-    <item>热映榜</item>
+    <item>正在热映</item>
     <!--
     <item>北美榜</item>
     -->
-    <item>Top250</item>
+    <item>豆瓣Top250</item>
   </string-array>
 
 

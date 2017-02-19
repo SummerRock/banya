@@ -14,7 +14,6 @@ public class MusicApiUtils {
     public static String KereaTag[] ={"bigbang","rain", "PSY", "李弘基", "李承哲","金钟国", "李孝利", "孝琳", "IU", "EXO", "T-ara", "东方神起", "Epik High", "Girl's Day", " 紫雨林", "Zebra"};
     public static String AmericanTag[] ={"Jay-Z","Justin Bieber","James Blunt","Eminem","Akon","Adele","Avril Lavigne","Beyoncé","Lady GaGa","Taylor Swift","Alicia Keys","Owl City","Coldplay"};
 
-
     public static String[] getApiTag(int pos){
         switch (pos){
             case 0:

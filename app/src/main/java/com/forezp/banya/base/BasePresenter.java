@@ -16,7 +16,6 @@ public abstract class BasePresenter {
     public Context mContext;
     public static final DoubanApi doubanApi = ApiFactory.getDoubanApiSingleton();
 
-
     public BasePresenter(Context context) {
         mContext = context;
         // myHttp = new Myhttp();

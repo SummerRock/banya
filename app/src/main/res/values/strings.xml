@@ -39,4 +39,7 @@
     <string name="film">电影</string>
     <string name="book">图书</string>
     <string name="music">音乐</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

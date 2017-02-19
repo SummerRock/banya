@@ -1,21 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_light_gray"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.forezp.banya.viewimpl.film.FilmComingFragment">
 
+    <!-- TODO: Update blank fragment layout -->
     <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/id_swiperefreshlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--
-         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                使用RecyclerView需要在build.gradle中添加
-               compile 'com.android.support:recyclerview-v7:23.3.0'
-        -->
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
@@ -24,7 +21,6 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:foregroundGravity="center" />
-
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

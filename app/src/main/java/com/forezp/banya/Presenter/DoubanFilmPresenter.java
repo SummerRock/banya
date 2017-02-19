@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.forezp.banya.base.BasePresenter;
+import com.forezp.banya.bean.filecomingsoon.FilmComingSoon;
 import com.forezp.banya.bean.filmdetail.FilmDetail;
 import com.forezp.banya.bean.filmlive.FilmLive;
 import com.forezp.banya.bean.filmusbox.FilmUsBox;
@@ -12,8 +13,10 @@ import com.forezp.banya.bean.top250.Root;
 import com.forezp.banya.viewinterface.film.IGetFilmDetail;
 import com.forezp.banya.viewinterface.film.IGetFilmLiveView;
 import com.forezp.banya.viewinterface.film.IGetUsBoxView;
+import com.forezp.banya.viewinterface.film.IgetFilmComingView;
 import com.forezp.banya.viewinterface.film.IgetTop250View;
 
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -41,8 +44,6 @@ public class DoubanFilmPresenter extends BasePresenter{
 
     }
 
-
-
     private void disPlayFilmLiveList(IGetFilmLiveView iGetFilmLiveView,FilmLive filmLive, Context context) {
         //Toast.makeText(context,filmLive.toString(),Toast.LENGTH_SHORT).show();
         if(filmLive==null){
@@ -50,6 +51,30 @@ public class DoubanFilmPresenter extends BasePresenter{
         }else {
             iGetFilmLiveView.getFilmLiveSuccess(filmLive);
             Log.e("test", filmLive.toString());
+        }
+    }
+
+    /**
+     * 获取即将上映
+     */
+    public void getFilmComing(IgetFilmComingView IgetFilmComingView){
+
+        doubanApi.getComingFilm()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(filmComing -> {
+                    disPlayFilmComingList(IgetFilmComingView,filmComing, mContext);
+                },this::loadError);
+
+    }
+
+    private void disPlayFilmComingList(IgetFilmComingView iGetFilmComingView, FilmComingSoon filmComing, Context context) {
+        //Toast.makeText(context,filmLive.toString(),Toast.LENGTH_SHORT).show();
+        if(filmComing==null){
+            iGetFilmComingView.getDataFail();
+        }else {
+            iGetFilmComingView.getFilmComingSuccess(filmComing);
+            //Log.e("test", filmComing.toString());
         }
     }
 
@@ -84,12 +109,12 @@ public class DoubanFilmPresenter extends BasePresenter{
      */
 
     public void getTop250(IgetTop250View igetTop250View,int start, int count,boolean isLoadMore){
-        doubanApi.getTop250(start,count)
+        Subscription subscribe = doubanApi.getTop250(start, count)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(root -> {
-                    disPlayDoubanTop250List(igetTop250View,root, isLoadMore);
-                },this::loadError);
+                    disPlayDoubanTop250List(igetTop250View, root, isLoadMore);
+                }, this::loadError);
 
     }
 
