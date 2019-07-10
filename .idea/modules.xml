@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/banya.iml" filepath="$PROJECT_DIR$/banya.iml" />
+      <module fileurl="file://$PROJECT_DIR$/banya.iml" filepath="$PROJECT_DIR$/banya.iml" />
+      <module fileurl="file://$PROJECT_DIR$/douyalibrary/douyalibrary.iml" filepath="$PROJECT_DIR$/douyalibrary/douyalibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/douyalibrary/douyalibrary.iml" filepath="$PROJECT_DIR$/douyalibrary/douyalibrary.iml" />
     </modules>
   </component>
